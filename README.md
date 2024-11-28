@@ -5,7 +5,7 @@
 apt-get install -y cron git
 curl https://get.acme.sh | sh
 git clone https://github.com/szNightFury/Acme.git
-mv ./Acme/setup.ssh ./
+mv ./Acme/setup_ssh.sh ./
 rm -rf ./Acme
 chmod +x ./setup_ssh.sh
 ./setup_ssh.sh
