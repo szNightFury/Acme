@@ -87,6 +87,14 @@ for domain in "${domains[@]}"; do
     domain_args="$domain_args -d $domain"
 done
 
+# 取消代理设置
+unset http_proxy
+unset https_proxy
+unset all_proxy
+unset HTTP_PROXY
+unset HTTPS_PROXY
+unset ALL_PROXY
+
 # 申请测试证书
 echo "申请测试证书..."
 ~/.acme.sh/acme.sh --issue $domain_args --standalone -k ec-256 --force --test
