@@ -18,5 +18,5 @@ git clone https://github.com/szNightFury/Acme.git
 mv ./Acme/setup_ssh_ipv6_only.sh ./
 rm -rf ./Acme
 chmod +x ./setup_ssh_ipv6_only.sh
-./setup_ssh.sh
+./setup_ssh_ipv6_only.sh
 ```
