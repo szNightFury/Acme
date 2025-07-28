@@ -97,7 +97,7 @@ unset ALL_PROXY
 
 # 申请测试证书
 echo "申请测试证书..."
-~/.acme.sh/acme.sh --issue $domain_args --standalone -k ec-256 --force --test
+~/.acme.sh/acme.sh --issue $domain_args --server letsencrypt --standalone -k ec-256 --force --test
 if [ $? -ne 0 ]; then
     echo "测试证书申请失败，请检查错误信息。"
     exit 1
@@ -109,7 +109,7 @@ rm -rf "$HOME/.acme.sh/${main_domain}_ecc"
 
 # 申请正式证书
 echo "申请正式证书..."
-~/.acme.sh/acme.sh --issue $domain_args --standalone -k ec-256 --force
+~/.acme.sh/acme.sh --issue $domain_args --server letsencrypt --standalone -k ec-256 --force
 if [ $? -ne 0 ]; then
     echo "正式证书申请失败，请检查错误信息。"
     exit 1
