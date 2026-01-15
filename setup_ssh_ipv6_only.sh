@@ -57,11 +57,19 @@ fi
 # 安装 acme.sh
 if [ ! -d "$HOME/.acme.sh" ]; then
     echo "正在安装 acme.sh..."
-    curl https://get.acme.sh | sh
-    if [ $? -ne 0 ]; then
-        echo "acme.sh 安装失败，请检查错误信息。"
-        exit 1
+    curl -fsSL https://get.acme.sh | sh
+    if [ $? -ne 0 ] || [ ! -d "$HOME/.acme.sh" ]; then
+        echo "官方安装失败，尝试使用 git clone 安装..."
+        git clone https://github.com/acmesh-official/acme.sh.git "$HOME/.acme.sh" || { 
+            echo "git clone 安装失败"; 
+            exit 1; 
+        }
+        "$HOME/.acme.sh/acme.sh" --install || { 
+            echo "acme.sh 安装失败"; 
+            exit 1; 
+        }
     fi
+    echo "acme.sh 安装完成！"
 else
     echo "acme.sh 已安装。"
 fi
