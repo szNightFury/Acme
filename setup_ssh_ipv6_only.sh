@@ -64,8 +64,10 @@ if [ ! -d "$HOME/.acme.sh" ]; then
             echo "git clone 安装失败"; 
             exit 1; 
         }
-        "$HOME/.acme.sh/acme.sh" --install || { 
-            echo "acme.sh 安装失败"; 
+        cd "$HOME/.acme.sh"
+        chmod +x acme.sh
+        ./acme.sh --install || { 
+            echo "acme.sh 安装失败";
             exit 1; 
         }
     fi
